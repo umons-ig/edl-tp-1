@@ -1,58 +1,42 @@
-# Calculator Workshop - PyTest Demo
+# Exercice 1 : Fondamentaux des Tests Unitaires
 
-A workshop project demonstrating Test-Driven Development with pytest and git workflow.
+## Objectif
 
-## Quick Start
+Cet exercice a pour but de vous familiariser avec les tests unitaires et le cycle de développement piloté par les tests (TDD). Votre tâche consiste à corriger les fonctions défectueuses dans `calculator.py` afin que tous les tests unitaires définis dans `test_calculator.py` passent avec succès.
 
-```bash
-# Run tests (simplest command)
-pytest
+## Configuration de l'environnement
 
-# Run calculator demo
-python calculator.py
+1.  **Changer de branche pour l'exercice 1 :**
+    ```bash
+    git checkout exercice-1-test-unitaire
+    ```
 
-# Commit and push to trigger automatic tests
-git add .
-git commit -m "Fix calculator functions"
-git push
-```
+## Utilisation
 
-## Project Structure
+### Exécuter les tests
 
-```text
-calculator.py          # Calculator functions (some have bugs to fix!)
-test_calculator.py     # Test cases for workshop
-```
-
-## Workshop Tasks
-
-1. Fix `divide()` - handle division by zero
-2. Fix `power()` - support negative exponents  
-3. Implement `factorial()` function
-4. Fix `average()` - handle empty lists
-5. Push to GitHub and see tests run automatically! ✅
-
-## GitHub Actions
-
-The repository includes automated testing that runs on every push. Check the "Actions" tab on GitHub to see test results.
-
-## Installation
-
-### Install uv
+Pour exécuter les tests unitaires et vérifier votre progression, utilisez la commande suivante :
 
 ```bash
-# macOS and Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-
-# With pip
-pip install uv
-
-# With conda
-conda install -c conda-forge uv
-
-# With homebrew (macOS)
-brew install uv
+uv run pytest test_calculator.py
 ```
+
+Au début de l'exercice, vous devriez observer plusieurs échecs de tests. Votre objectif est de modifier `calculator.py` jusqu'à ce que tous les tests passent.
+
+### Fichiers à modifier
+
+*   `calculator.py` : Contient les fonctions à corriger.
+*   `test_calculator.py` : Contient les tests unitaires. Vous pouvez également ajouter vos propres tests si vous le jugez nécessaire pour couvrir des cas non testés.
+
+## Fonctions à corriger
+
+Les fonctions suivantes dans `calculator.py` contiennent des bogues :
+
+*   `divide(a, b)` : Doit gérer la division par zéro en levant une `ZeroDivisionError`.
+*   `power(base, exponent)` : Doit gérer correctement les exposants négatifs et le cas où l'exposant est zéro.
+*   `factorial(n)` : Doit calculer la factorielle pour les nombres non négatifs (0! = 1, 1! = 1) et lever une `ValueError` pour les nombres négatifs.
+*   `average(numbers)` : Doit gérer le cas d'une liste vide en levant une `ValueError`.
+
+## Résultat attendu
+
+Lorsque toutes les corrections auront été appliquées et que les tests seront exécutés, la sortie de la commande `uv run pytest test_calculator.py` devra indiquer que **tous les tests ont réussi** (par exemple, "15 passed in X.XXs").
